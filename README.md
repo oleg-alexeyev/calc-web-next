@@ -24,34 +24,39 @@ The goal is to assess code structure, state management, and overall implementati
 - Short README with setup instructions and any assumptions made
 
 
-# Implementation Notes
-- The size of the calculator is fixed to match the mockup (225x400px) - 
+## Implementation
+
+### Location
+The source code is available at: https://github.com/oleg-alexeyev/calc-web-next
+
+The latest version is deployed at: https://oleg-alexeyev.github.io/calc-web-next/
+
+### Notes
+- The size of the calculator is fixed to match the mockup (225x400px) -
   how it looks in the _email_ (the raw image is 450x800px).
-- Button labels are rendered as text to allow internationalization, 
+- Button labels are rendered as text to allow internationalization,
   accessibility, better scaling on high-DPI screens, and adding more
   operations easily.
 - All the graphics are done with pure CSS, no image assets are used.
 - Favicon is from Google's Material Symbols (Calculate), Apache License v 2.0.
 
-## Running locally 
-
+### Running locally 
 Run the development server:
 ```bash
 npm run dev
 ```
-
 Open http://localhost:3000 with your browser to use the calculator.
 
-## Tasks done
+### Tasks done
 - Add a favicon
+- Build SPA app with GitHub Actions and publish to GitHub Pages
 
-## Backlog
-- Build SPA app with GitHub actions and publish to GitHub pages
+### Backlog
 - Backbone UI with clickable buttons and rendering the current calculator state
 - Calculator logic implementation with unit tests
 - Style the app to match the mockup
 
-## Future improvements
+### Future improvements
 - Buttons with armed state and hover effects
 - Keyboard support
 - Memory functions (M+, M-, MR, MC)
