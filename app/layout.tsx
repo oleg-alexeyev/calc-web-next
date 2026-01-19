@@ -11,9 +11,10 @@ const geistSans = Geist({
 export const metadata: Metadata = {
     title: "Calculator",
     description: "A simple calculator built with Next.js",
-    icons: {
-        icon: "/icon.svg",
-        apple: "/apple-icon.png",
+    appleWebApp: {
+        capable: true,
+        title: "Calculator",
+        statusBarStyle: "default",
     },
 };
 
