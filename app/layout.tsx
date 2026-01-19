@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} antialiased`}>
+    <html lang="en" className={`${geistSans.variable} antialiased`}>
+      <body>
         {children}
       </body>
     </html>
