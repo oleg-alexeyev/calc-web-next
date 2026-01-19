@@ -43,15 +43,15 @@ npm run dev
 Open http://localhost:3000 with your browser to use the calculator.
 
 ## Tasks done
+- Add a favicon
 
 ## Backlog
+- Build SPA app with GitHub actions and publish to GitHub pages
 - Backbone UI with clickable buttons and rendering the current calculator state
 - Calculator logic implementation with unit tests
 - Style the app to match the mockup
-- Add a favicon
 
 ## Future improvements
-- Build SPA app with GitHub actions and publish to GitHub pages
 - Buttons with armed state and hover effects
 - Keyboard support
 - Memory functions (M+, M-, MR, MC)
