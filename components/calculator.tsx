@@ -16,7 +16,7 @@ export default function Calculator() {
                 </div>
             </div>
             <div className="col-span-7">
-                <Keypad columns={3}>
+                <Keypad columnsClass="grid-cols-3">
                     <SymbolButton label="7"/>
                     <SymbolButton label="8"/>
                     <SymbolButton label="9"/>
@@ -33,7 +33,7 @@ export default function Calculator() {
                 </Keypad>
             </div>
             <div className="col-span-3">
-                <Keypad columns={1}>
+                <Keypad columnsClass="grid-cols-1">
                     <OperatorButton label="&divide;" action={() => {
                     }}/>
                     <OperatorButton label="&times;" action={() => {
