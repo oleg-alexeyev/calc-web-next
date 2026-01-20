@@ -44,6 +44,7 @@ The latest version is deployed at: https://oleg-alexeyev.github.io/calc-web-next
 - The mockup seems to be using Arial, so same font is used in the app.
 - The mockup seems to be cut on the right and bottom edges.
   Added a border rounded on the bottom too.
+- The app is installable as an app to a device (PWA).
 
 ### Running locally 
 Run the development server:
