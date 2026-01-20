@@ -38,7 +38,12 @@ The latest version is deployed at: https://oleg-alexeyev.github.io/calc-web-next
   accessibility, better scaling on high-DPI screens, and adding more
   operations easily.
 - All the graphics are done with pure CSS, no image assets are used.
+- Generic <section> is used for the calculator component to allow
+  embedding it into various contexts (not only <main>).
 - Favicon is from Google's Material Symbols (Calculate), Apache License v 2.0.
+- The mockup seems to be using Arial, so same font is used in the app.
+- The mockup seems to be cut on the right and bottom edges.
+  Added a border rounded on the bottom too.
 
 ### Running locally 
 Run the development server:
@@ -50,18 +55,27 @@ Open http://localhost:3000 with your browser to use the calculator.
 ### Tasks done
 - Add a favicon
 - Build SPA app with GitHub Actions and publish to GitHub Pages
+- Backbone UI with clickable buttons
+- Style the app to match the mockup
+  * Buttons with armed state and hover effects
+  * Round buttons are not clickable outside their visible area
 
 ### Backlog
-- Backbone UI with clickable buttons and rendering the current calculator state
 - Calculator logic implementation with unit tests
-- Style the app to match the mockup
+  * Division by zero handling
+  * Rounding errors handling
+  * Large number handling
+- State management
+- Connect UI with the calculator logic
 
 ### Future improvements
-- Buttons with armed state and hover effects
+- Parentheses support
 - Keyboard support
 - Memory functions (M+, M-, MR, MC)
+- History of calculations
 - Theme support (light/dark mode)
 - Internationalization (i18n) support for multiple languages
 - Right to left layout support for languages like Arabic, Hebrew, etc.
-- Accessibility improvements (ARIA labels, screen reader support)
+- Ensure accessibility compliance (ARIA roles, screen reader support)
+  * role="region" aria-label="Calculator" -> Calculator component
 - Scientific calculator mode with advanced functions (sin, cos, tan, log, etc.)
