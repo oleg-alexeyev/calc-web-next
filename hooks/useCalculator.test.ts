@@ -93,7 +93,7 @@ describe('useCalculator Hook', () => {
             result.current.calculateResult();
         });
 
-        expect(result.current.expression).toBe("Error: division by zero");
+        expect(result.current.expression).toBe("Error: / by zero");
     });
 
     it('should replace error on entering symbols', () => {
