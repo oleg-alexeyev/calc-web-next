@@ -67,7 +67,7 @@ export function useCalculator() {
             try {
                 const result = new Function(`return ${prev}`)();
                 if (result === Infinity || result === -Infinity) {
-                    return "Error: division by zero";
+                    return "Error: / by zero";
                 }
                 const safeResult = Number(result.toFixed(12));
                 return String(safeResult);

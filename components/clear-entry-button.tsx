@@ -1,4 +1,4 @@
-export default function ClearEntryButton() {
+export default function ClearEntryButton({clearAction}: { clearAction: () => void; }) {
     return (
         <button type="button" className="
             flex-none h-full z-0 pr-0.5
@@ -7,8 +7,9 @@ export default function ClearEntryButton() {
             rounded-l-sm outline-2 outline-[#CF4C1C]
             border-t-3 border-l-3 border-white/45
             transition-all active:translate-x-px active:translate-y-px
-            active:brightness-85 hover:brightness-90
-        ">
+            active:brightness-85 hover:brightness-90"
+                onClick={clearAction}
+        >
             CE
         </button>
     );

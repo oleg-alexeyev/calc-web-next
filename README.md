@@ -65,10 +65,14 @@ Open http://localhost:3000 with your browser to use the calculator.
   * Large number handling
   * Clear Entry (CE) should clear only the current entry (number), second click should clear all
 - State management
+- Connect UI with the calculator logic
 
 ### Backlog
-- Connect UI with the calculator logic
-  * Replace '*', '/', and '-' with nice-looking Unicode symbols
+- Limit the number of digits displayed
+- '.' after '0' should produce '0.'
+- CE while clearing the last entry removes the whole string if only one number is present
+- Typing digits after '=' should starts a new calculation
+- Replace '*', '/', and '-' with nice-looking Unicode symbols
  
 ### Future improvements
 - Use mathjs for expression parsing and evaluation

@@ -1,9 +1,12 @@
+'use client';
 import Keypad from "@/components/keypad";
 import Display from "@/components/display";
 import SymbolButton from "@/components/symbol-button";
 import OperatorButton from "@/components/operator-button";
+import { useCalculator } from "@/hooks/useCalculator";
 
 export default function Calculator() {
+    const { expression, enterSymbols, addOperation, clear, calculateResult } = useCalculator();
     return (
         <section className="grid grid-cols-10
             gap-2 p-1.5 w-56.25
@@ -12,35 +15,34 @@ export default function Calculator() {
          ">
             <div className="col-span-10">
                 <div className={`bg-[#E0E0E0] rounded-xl flex gap-2 p-2 items-stretch justify-items-stretch`}>
-                    <Display/>
+                    <Display value={expression} clearAction={() => {
+                        clear();
+                    }}/>
                 </div>
             </div>
             <div className="col-span-7">
                 <Keypad columnsClass="grid-cols-3">
-                    <SymbolButton label="7"/>
-                    <SymbolButton label="8"/>
-                    <SymbolButton label="9"/>
-                    <SymbolButton label="4"/>
-                    <SymbolButton label="5"/>
-                    <SymbolButton label="6"/>
-                    <SymbolButton label="1"/>
-                    <SymbolButton label="2"/>
-                    <SymbolButton label="3"/>
-                    <SymbolButton label="0"/>
-                    <SymbolButton label="."/>
+                    {['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', '.'].map((symbol) => (
+                        <SymbolButton key={symbol} label={symbol} action={() => enterSymbols(symbol)}/>
+                    ))}
                     <OperatorButton label="=" action={() => {
+                        calculateResult();
                     }}/>
                 </Keypad>
             </div>
             <div className="col-span-3">
                 <Keypad columnsClass="grid-cols-1">
                     <OperatorButton label="&divide;" action={() => {
+                        addOperation('/')
                     }}/>
                     <OperatorButton label="&times;" action={() => {
+                        addOperation('*')
                     }}/>
                     <OperatorButton label="&minus;" action={() => {
+                        addOperation('-')
                     }}/>
                     <OperatorButton label="+" action={() => {
+                        addOperation('+')
                     }}/>
                 </Keypad>
             </div>
