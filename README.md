@@ -59,18 +59,23 @@ Open http://localhost:3000 with your browser to use the calculator.
 - Style the app to match the mockup
   * Buttons with armed state and hover effects
   * Round buttons are not clickable outside their visible area
-
-### Backlog
 - Calculator logic implementation with unit tests
   * Division by zero handling
   * Rounding errors handling
   * Large number handling
+  * Clear Entry (CE) should clear only the current entry (number), second click should clear all
 - State management
-- Connect UI with the calculator logic
 
+### Backlog
+- Connect UI with the calculator logic
+  * Replace '*', '/', and '-' with nice-looking Unicode symbols
+ 
 ### Future improvements
+- Use mathjs for expression parsing and evaluation
+- Responsive design for various screen sizes
 - Parentheses support
 - Keyboard support
+- Clipboard support (copy/paste)
 - Memory functions (M+, M-, MR, MC)
 - History of calculations
 - Theme support (light/dark mode)
