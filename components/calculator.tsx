@@ -6,7 +6,7 @@ import OperatorButton from "@/components/operator-button";
 import { useCalculator } from "@/hooks/useCalculator";
 
 export default function Calculator() {
-    const { expression, enterSymbols, addOperation, clear, calculateResult } = useCalculator();
+    const { state, enterSymbols, addOperation, clear, calculateResult } = useCalculator();
     return (
         <section className="grid grid-cols-10
             gap-2 p-1.5 w-56.25
@@ -15,7 +15,7 @@ export default function Calculator() {
          ">
             <div className="col-span-10">
                 <div className={`bg-[#E0E0E0] rounded-xl flex gap-2 p-2 items-stretch justify-items-stretch`}>
-                    <Display value={expression} clearAction={() => {
+                    <Display value={state.expression} clearAction={() => {
                         clear();
                     }}/>
                 </div>

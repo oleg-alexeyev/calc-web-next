@@ -38,8 +38,8 @@ The latest version is deployed at: https://oleg-alexeyev.github.io/calc-web-next
   accessibility, better scaling on high-DPI screens, and adding more
   operations easily.
 - All the graphics are done with pure CSS, no image assets are used.
-- Generic <section> is used for the calculator component to allow
-  embedding it into various contexts (not only <main>).
+- Generic `<section>` is used for the calculator component to allow
+  embedding it into various contexts (not only `<main>`).
 - Favicon is from Google's Material Symbols (Calculate), Apache License v 2.0.
 - The mockup seems to be using Arial, so same font is used in the app.
 - The mockup seems to be cut on the right and bottom edges.
@@ -66,13 +66,15 @@ Open http://localhost:3000 with your browser to use the calculator.
   * Clear Entry (CE) should clear only the current entry (number), second click should clear all
 - State management
 - Connect UI with the calculator logic
+- CE while clearing the last entry removes the whole string if only one number is present
+- '.' after '0' should produce '0.'
+- Limit the number of digits displayed
+- Decrease font size if output doesn't fit
+- Dot not allow more than one '.' in a number
+- Replace '*', '/', and '-' with nice-looking Unicode symbols
+- Typing digits after '=' should starts a new calculation
 
 ### Backlog
-- Limit the number of digits displayed
-- '.' after '0' should produce '0.'
-- CE while clearing the last entry removes the whole string if only one number is present
-- Typing digits after '=' should starts a new calculation
-- Replace '*', '/', and '-' with nice-looking Unicode symbols
  
 ### Future improvements
 - Use mathjs for expression parsing and evaluation

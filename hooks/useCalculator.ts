@@ -11,71 +11,90 @@ function getLastNumber(s: string) {
     return match ? match[0] : "";
 }
 
+interface CalculatorState {
+    expression: string;
+    result: boolean;
+}
+
 export function useCalculator() {
-    const [expression, setExpression] = useState<string>("0");
+    const [state, setState] = useState<CalculatorState>({
+        expression: "0",
+        result: false
+    });
 
     const methods = {
         enterSymbols: (symbols: string) => {
             if (/[^0-9.]/.test(symbols)) {
                 throw new Error(`Invalid input: "${symbols}". Only digits, dots, and minus are allowed.`);
             }
-            setExpression(prev => {
-                if (prev === "0") {
-                    return symbols;
+            setState(prev => {
+                if (prev.expression === "0") {
+                    if (!symbols.startsWith('.')) {
+                        return { expression: symbols, result: false };
+                    }
                 }
-                if (prev.toLowerCase().startsWith("error")) {
-                    return symbols;
+                if (prev.expression.toLowerCase().startsWith("error")) {
+                    return { expression: symbols, result: false };
                 }
-                const lastNumberStr = getLastNumber(prev);
+                if (prev.result) {
+                    return { expression: symbols, result: false };
+                }
+                const lastNumberStr = getLastNumber(prev.expression);
                 if (lastNumberStr) {
+                    if (lastNumberStr.includes('.')) {
+                        symbols = symbols.replace('.', '');
+                    }
                     const newNumberStr = lastNumberStr + symbols;
                     const newNumber = Number(newNumberStr);
                     if (newNumber === Number.NaN || newNumber > Number.MAX_SAFE_INTEGER) {
                         return prev;
                     }
                 }
-                return prev + symbols;
+                return { expression: prev.expression + symbols, result: false };
             });
         },
 
         addOperation: (op: Operation) => {
-            setExpression(prev => {
-                if (prev === "0" && op === '-') {
-                    return op;
+            setState(prev => {
+                if (prev.expression === "0" && op === '-') {
+                    return { expression: op, result: false };
                 }
-                if (endsWithOperation(prev)) {
-                    return prev.slice(0, -1) + op;
+                if (endsWithOperation(prev.expression)) {
+                    return { expression: prev.expression.slice(0, -1) + op, result: false };
                 }
-                return prev + op;
+                return { expression: prev.expression + op, result: false };
             });
         },
 
         clear: () => {
-            setExpression(prev => {
-                const lastNumberStr = getLastNumber(prev);
+            setState(prev => {
+                const lastNumberStr = getLastNumber(prev.expression);
                 if (lastNumberStr) {
-                    return prev.slice(0, prev.length - lastNumberStr.length);
+                    const next = prev.expression.slice(0, prev.expression.length - lastNumberStr.length);
+                    if (next) {
+                        return { expression: next, result: false };
+                    }
                 }
-                return "0";
+                return { expression: "0", result: false };
             });
         },
 
-        calculateResult: () => setExpression(prev => {
-            if (endsWithOperation(prev)) {
+        calculateResult: () => setState(prev => {
+            if (endsWithOperation(prev.expression)) {
                 return prev;
             }
             try {
-                const result = new Function(`return ${prev}`)();
+                const result = new Function(`return ${prev.expression}`)();
                 if (result === Infinity || result === -Infinity) {
-                    return "Error: / by zero";
+                    return { expression: "Error: / by zero", result: true };
                 }
                 const safeResult = Number(result.toFixed(12));
-                return String(safeResult);
+                return { expression: safeResult.toString(), result: true };
             } catch {
-                return "Error";
+                return { expression: "Error", result: true };
             }
         })
     };
 
-    return {expression, ...methods};
+    return {state, ...methods};
 }
