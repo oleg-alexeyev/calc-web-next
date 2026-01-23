@@ -12,9 +12,9 @@ export default function DisplayScreen({ value }: { value: string; }) {
        `}>
             {
                 value
-                    .replace('*', '×')
-                    .replace('/', '÷')
-                    .replace('-', '−')
+                    .replaceAll('*', '×')
+                    .replaceAll('/', '÷')
+                    .replaceAll('-', '−')
             }
         </output>
     );
